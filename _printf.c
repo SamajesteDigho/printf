@@ -30,8 +30,7 @@ size++;
 else
 {
 i++;
-print_text_formatted(format[i], args);
-size++;
+size += print_text_formatted(format[i], args);
 }
 }
 else
@@ -42,4 +41,21 @@ size++;
 i++;
 }
 return (size);
+}
+
+int main(void)
+{
+	int len, len2;
+
+	len = _printf("%s", "This sentence is retrieved from va_args!\n");
+	len2 = printf("%s", "This sentence is retrieved from va_args!\n");
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("L1 = %d, L2 = %d.\n", len, len2);
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
+	return (0);
 }

@@ -21,6 +21,10 @@ break;
 case 'i':
 return (0);
 break;
+/* c - As string are concerned */
+case 's':
+return (0);
+break;
 /* All invalid specifiers */
 default:
 return (1);
@@ -36,21 +40,31 @@ return (1);
  * Description: This function determines if a character is a print formatter
  * Return: Returns 0 - Failed, 1 - Valid, 2 - Need second level check
  */
-void print_text_formatted(char c, va_list args)
+int print_text_formatted(char c, va_list args)
 {
+char *str;
 switch (c)
 {
 /* c - As characters are concerned */
 case 'c':
 putchar(va_arg(args, int));
+return (1);
 break;
 /* c - As integers are concerned */
 case 'd':
 printf("%d", va_arg(args, int));
+return (1);
 break;
 /* c - As integers are concerned */
 case 'i':
 printf("%d", va_arg(args, int));
 break;
+/* c - As string are concerned */
+case 's':
+str = va_arg(args, char*);
+printf("%s", str);
+return (strlen(str));
+break;
 }
+return (0);
 }
