@@ -37,6 +37,5 @@ putchar(format[i]);
 }
 i++;
 }
-putchar('\0');
 return (i);
 }
