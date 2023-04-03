@@ -23,8 +23,8 @@ if (format[i] == '%' && valid_formatter_character(format[i + 1]) == 0)
 {
 if (format[i + 1] == '%')
 {
-putchar('%');
 i++;
+putchar('%');
 size++;
 }
 else

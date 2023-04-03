@@ -25,6 +25,10 @@ break;
 case 's':
 return (0);
 break;
+/* c - The asterix Jumper */
+case '%':
+return (0);
+break;
 /* All invalid specifiers */
 default:
 return (1);
