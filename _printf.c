@@ -19,8 +19,10 @@ va_start(args, format);
 i = 0;
 if (strlen(format) == 1)
 {
-printf("Values gotten");
+if (format[0] == '%')
+{
 return (-1);
+}
 }
 while (format[i] != '\0')
 {
