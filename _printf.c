@@ -9,7 +9,6 @@ int _printf(const char *format, ...)
 {
 va_list args;
 int i, size;
-char *end;
 
 size = 0;
 if (format == NULL)
@@ -18,8 +17,7 @@ return (-1);
 }
 va_start(args, format);
 i = 0;
-end = "%";
-if (format == end && strlen(format) == strlen(end))
+if (strlen(format) == 1)
 {
 printf("Values gotten");
 return (-1);
