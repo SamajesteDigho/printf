@@ -59,13 +59,27 @@ break;
 case 'd':
 nb = va_arg(args, int);
 printf("%d", nb);
+if (nb < 0)
+{
+return (count_nb_digits(nb) + 1);
+}
+else
+{
 return (count_nb_digits(nb));
+}
 break;
 /* c - As integers are concerned */
 case 'i':
 nb = va_arg(args, int);
 printf("%d", nb);
+if (nb < 0)
+{
+return (count_nb_digits(nb) + 1);
+}
+else
+{
 return (count_nb_digits(nb));
+}
 break;
 /* c - As string are concerned */
 case 's':
