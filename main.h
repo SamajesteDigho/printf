@@ -9,4 +9,6 @@ int _printf(const char *format, ...);
 
 int valid_formatter_character(char c);
 
+void print_text_formatted(char c, va_list args);
+
 #endif /* MAIN_H */

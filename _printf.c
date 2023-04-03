@@ -27,8 +27,8 @@ i++;
 }
 else
 {
-printf("detected");
 i++;
+print_text_formatted(format[i], args);
 }
 }
 else
@@ -37,5 +37,6 @@ putchar(format[i]);
 }
 i++;
 }
-return (0);
+putchar('\0');
+return (i);
 }
