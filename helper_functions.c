@@ -104,6 +104,10 @@ unsigned int count_nb_digits(int value)
 {
 unsigned int size;
 size = 0;
+if (value == 0)
+{
+return (1);
+}
 while( value != 0)
 {
 value = value / 10;
