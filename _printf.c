@@ -8,8 +8,9 @@
 int _printf(const char *format, ...)
 {
 va_list args;
-int i;
+int i, size;
 
+size = 0;
 if (format == NULL)
 {
 return (-1);
@@ -24,18 +25,39 @@ if (format[i + 1] == '%')
 {
 putchar('%');
 i++;
+size++;
 }
 else
 {
 i++;
 print_text_formatted(format[i], args);
+size++;
 }
 }
 else
 {
 putchar(format[i]);
+size++;
 }
 i++;
 }
-return (i);
+return (size);
+}
+
+
+
+int main(void)
+{
+	int len, len2;
+
+	len = _printf("Let's print a simple sentence.\n");
+	len2 = printf("Let's print a simple sentence.\n");
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
+	return (0);
 }
