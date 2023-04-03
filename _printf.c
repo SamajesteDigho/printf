@@ -19,7 +19,7 @@ return (-1);
 va_start(args, format);
 i = 0;
 end = "%";
-if (format == end)
+if (format == end && strlen(format) == strlen(end))
 {
 printf("Values gotten");
 return (-1);
