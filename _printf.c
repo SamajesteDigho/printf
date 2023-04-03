@@ -17,6 +17,11 @@ return (-1);
 }
 va_start(args, format);
 i = 0;
+
+if (format[0] == '%')
+{
+return (-1);
+}
 while (format[i] != '\0')
 {
 if (format[i] == '%' && valid_formatter_character(format[i + 1]) == 0)
