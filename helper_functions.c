@@ -47,6 +47,7 @@ return (1);
 int print_text_formatted(char c, va_list args)
 {
 char *str;
+int nb;
 switch (c)
 {
 /* c - As characters are concerned */
@@ -56,12 +57,15 @@ return (1);
 break;
 /* c - As integers are concerned */
 case 'd':
-printf("%d", va_arg(args, int));
-return (1);
+nb = va_arg(args, int);
+printf("%d", nb);
+return (count_nb_digits(nb));
 break;
 /* c - As integers are concerned */
 case 'i':
-printf("%d", va_arg(args, int));
+nb = va_arg(args, int);
+printf("%d", nb);
+return (count_nb_digits(nb));
 break;
 /* c - As string are concerned */
 case 's':
@@ -79,4 +83,17 @@ return (strlen(str));
 break;
 }
 return (0);
+}
+
+
+unsigned int count_nb_digits(int value)
+{
+unsigned int size;
+size = 0;
+while( value != 0)
+{
+value = value / 10;
+size++;
+}
+return (size);
 }

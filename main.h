@@ -12,4 +12,6 @@ int valid_formatter_character(char c);
 
 int print_text_formatted(char c, va_list args);
 
+unsigned int count_nb_digits(int value);
+
 #endif /* MAIN_H */
