@@ -9,21 +9,13 @@ int _printf(const char *format, ...)
 {
 va_list args;
 int i, size;
-
 size = 0;
-if (format == NULL)
+if (format == NULL || (strlen(format) == 1 && format[0] == '%'))
 {
 return (-1);
 }
 va_start(args, format);
 i = 0;
-if (strlen(format) == 1)
-{
-if (format[0] == '%')
-{
-return (-1);
-}
-}
 while (format[i] != '\0')
 {
 if (format[i] == '%' && valid_formatter_character(format[i + 1]) == 0)
