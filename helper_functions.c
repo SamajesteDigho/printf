@@ -62,8 +62,16 @@ break;
 /* c - As string are concerned */
 case 's':
 str = va_arg(args, char*);
+if (str == NULL)
+{
+printf("(null)");
+return (6);
+}
+else
+{
 printf("%s", str);
 return (strlen(str));
+}
 break;
 }
 return (0);
