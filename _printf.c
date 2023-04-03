@@ -21,6 +21,7 @@ i = 0;
 end = "%";
 if (format == end)
 {
+printf("Values gotten");
 return (-1);
 }
 while (format[i] != '\0')
@@ -47,4 +48,22 @@ size++;
 i++;
 }
 return (size);
+}
+
+
+
+int main(void)
+{
+	int len, len2;
+
+	len = _printf("%");
+	len2 = printf("%");
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
+	return (0);
 }
