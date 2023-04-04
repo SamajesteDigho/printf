@@ -13,20 +13,40 @@ switch (c)
 case 'c':
 return (0);
 break;
-/* c - As integers are concerned */
+/* d - As integers are concerned */
 case 'd':
 return (0);
 break;
-/* c - As integers are concerned */
+/* i - As integers are concerned */
 case 'i':
 return (0);
 break;
-/* c - As string are concerned */
+/* s - As string are concerned */
 case 's':
 return (0);
 break;
-/* c - The asterix Jumper */
+/* % - The asterix Jumper */
 case '%':
+return (0);
+break;
+/* b - The binary comparer */
+case 'b':
+return (0);
+break;
+/* o - The unsigned int comparer */
+case 'o':
+return (0);
+break;
+/* u - The unsigned decimal comparer */
+case 'u':
+return (0);
+break;
+/* x - The unsigned int in hexadecimal comparer */
+case 'x':
+return (0);
+break;
+/* X - The unsigned int in hexadecimal uppercase are comparer */
+case 'X':
 return (0);
 break;
 /* All invalid specifiers */
@@ -48,12 +68,37 @@ int print_text_formatted(char c, va_list args)
 {
 char *str;
 int nb;
+unsigned int usi;
 switch (c)
 {
 /* c - As characters are concerned */
 case 'c':
 putchar(va_arg(args, int));
 return (1);
+break;
+/* o - As unsigned int are concerned */
+case 'o':
+usi = va_arg(args, unsigned int);
+printf("%o", usi);
+return (count_nb_digits(usi));
+break;
+/* u - As unsigned int decimal are concerned */
+case 'u':
+usi = va_arg(args, unsigned int);
+printf("%u", usi);
+return (count_nb_digits(usi));
+break;
+/* x - As unsigned int hexadecimal are concerned */
+case 'x':
+usi = va_arg(args, unsigned int);
+printf("%x", usi);
+return (count_nb_digits(usi));
+break;
+/* X - As unsigned int hexadecimal uppercase are concerned */
+case 'X':
+usi = va_arg(args, unsigned int);
+printf("%X", usi);
+return (count_nb_digits(usi));
 break;
 /* c - As integers are concerned */
 case 'd':
@@ -95,12 +140,16 @@ printf("%s", str);
 return (strlen(str));
 }
 break;
+/* b - As binary is concerned */
+case 'b':
+nb = va_arg(args, int);
+printf("%d\n", nb);
+return (count_nb_digits(nb));
 }
 return (0);
 }
 
-
-unsigned int count_nb_digits(int value)
+unsigned int count_nb_digits(long int value)
 {
 unsigned int size;
 size = 0;

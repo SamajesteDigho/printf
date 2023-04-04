@@ -12,6 +12,12 @@ int valid_formatter_character(char c);
 
 int print_text_formatted(char c, va_list args);
 
-unsigned int count_nb_digits(int value);
+unsigned int count_nb_digits(long int value);
+
+char *decimal_to_binary(int val);
+
+char *reverse_recopy(char str[], int size);
+
+char *strrev(char *str);
 
 #endif /* MAIN_H */
