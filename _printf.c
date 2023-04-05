@@ -18,9 +18,14 @@ va_start(args, format);
 i = 0;
 while (format[i] != '\0')
 {
-if (format[i] == '%' && valid_formatter_character(format[i + 1]) == 0)
+if (format[i] == '%' && (valid_formatter_character(format[i + 1]) == 0 || valid_formatter_character(format[i + 1]) == 3))
 {
-if (format[i + 1] == '%')
+if (valid_formatter_character(format[i + 1]) == 3)
+{
+size += print_text_formatted(format[i + 2], args, "+");
+i += 2;
+}
+else if (format[i + 1] == '%')
 {
 i++;
 putchar('%');
@@ -29,7 +34,7 @@ size++;
 else
 {
 i++;
-size += print_text_formatted(format[i], args);
+size += print_text_formatted(format[i], args, "");
 }
 }
 else

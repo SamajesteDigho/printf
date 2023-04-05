@@ -11,7 +11,7 @@ int _printf(const char *format, ...);
 
 int valid_formatter_character(char c);
 
-int print_text_formatted(char c, va_list args);
+int print_text_formatted(char c, va_list args, char *sign);
 
 unsigned int count_nb_digits(long int value);
 

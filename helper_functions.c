@@ -3,7 +3,7 @@
  * valid_formatter_character - Function name
  * @c: The character to verify
  * Description: This function determines if a character is a print formatter
- * Return: Returns 0 - Failed, 1 - Valid, 2 - Need second level check
+ * Return: Returns 0 - Failed, 1 - Valid, 2 - Need second level check, 3 - skip
  */
 int valid_formatter_character(char c)
 {
@@ -57,6 +57,10 @@ break;
 case 'X':
 return (0);
 break;
+/* + - Printing and Skipping the char comparer */
+case '+':
+return (3);
+break;
 /* All invalid specifiers */
 default:
 return (1);
@@ -72,7 +76,7 @@ return (1);
  * Description: This function determines if a character is a print formatter
  * Return: Returns 0 - Failed, 1 - Valid, 2 - Need second level check
  */
-int print_text_formatted(char c, va_list args)
+int print_text_formatted(char c, va_list args, char *sign)
 {
 char *str;
 int nb;
@@ -106,10 +110,17 @@ case 'X':
 usi = va_arg(args, unsigned int);
 return (printf("%X", usi));
 break;
-/* c - As integers are concerned */
+/* d - As integers are concerned */
 case 'd':
 nb = va_arg(args, int);
+if (sign[0] == '+' && nb < 0)
+{
 return (printf("%d", nb));
+}
+else
+{
+return (printf("%s%d", sign, nb));
+}
 break;
 /* c - As integers are concerned */
 case 'i':
