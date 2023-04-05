@@ -25,6 +25,10 @@ break;
 case 's':
 return (0);
 break;
+/* S - As string with restrictions are concerned */
+case 'S':
+return (0);
+break;
 /* % - The asterix Jumper */
 case '%':
 return (0);
@@ -100,28 +104,12 @@ break;
 /* c - As integers are concerned */
 case 'd':
 nb = va_arg(args, int);
-printf("%d", nb);
-if (nb < 0)
-{
-return (count_nb_digits(nb) + 1);
-}
-else
-{
-return (count_nb_digits(nb));
-}
+return (printf("%d", nb));
 break;
 /* c - As integers are concerned */
 case 'i':
 nb = va_arg(args, int);
-printf("%d", nb);
-if (nb < 0)
-{
-return (count_nb_digits(nb) + 1);
-}
-else
-{
-return (count_nb_digits(nb));
-}
+return (printf("%d", nb));
 break;
 /* c - As string are concerned */
 case 's':
@@ -135,6 +123,18 @@ else
 {
 printf("%s", str);
 return (strlen(str));
+}
+break;
+/* S - As string are concerned */
+case 'S':
+str = va_arg(args, char*);
+if (str == NULL)
+{
+return (print_str("(null)"));
+}
+else
+{
+return (print_str(str));
 }
 break;
 /* b - As binary is concerned */
@@ -160,4 +160,27 @@ value = value / 10;
 size++;
 }
 return (size);
+}
+
+
+unsigned int print_str(char *str)
+{
+int i, size;
+unsigned int count;
+size = strlen(str);
+count = 0;
+for (i = 0;  i < size; i++)
+{
+if (str[i] > 0  && str[i] < 32)
+{
+printf("\\x0%X", str[i]);
+count += 4;
+}
+else
+{
+putchar(str[i]);
+count++;
+}
+}
+return (count);
 }
