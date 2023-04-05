@@ -61,6 +61,10 @@ break;
 case '+':
 return (3);
 break;
+/*   - Printing and Skipping for space the char comparer */
+case ' ':
+return (3);
+break;
 /* All invalid specifiers */
 default:
 return (1);

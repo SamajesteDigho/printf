@@ -22,7 +22,14 @@ if (format[i] == '%' && (valid_formatter_character(format[i + 1]) == 0 || valid_
 {
 if (valid_formatter_character(format[i + 1]) == 3)
 {
+if (format[i + 1] == '+')
+{
 size += print_text_formatted(format[i + 2], args, "+");
+}
+else
+{
+size += print_text_formatted(format[i + 2], args, " ");
+}
 i += 2;
 }
 else if (format[i + 1] == '%')
