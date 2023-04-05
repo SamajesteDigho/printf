@@ -173,7 +173,7 @@ for (i = 0;  i < size; i++)
 {
 if (str[i] > 0  && str[i] < 32)
 {
-printf("\\x%X", str[i]);
+printf("\\x%02X", str[i]);
 count += 4;
 }
 else
