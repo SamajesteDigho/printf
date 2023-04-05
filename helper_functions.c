@@ -117,7 +117,7 @@ break;
 /* d - As integers are concerned */
 case 'd':
 nb = va_arg(args, int);
-if (sign[0] == '+' && nb < 0)
+if ((sign[0] == '+' && nb < 0) || (sign[0] == ' ' && nb < 0))
 {
 return (printf("%d", nb));
 }
