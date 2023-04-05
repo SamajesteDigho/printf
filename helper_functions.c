@@ -78,9 +78,8 @@ return (1);
 break;
 /* o - As unsigned int are concerned */
 case 'o':
-usi = va_arg(args, unsigned int);
-printf("%o", usi);
-return (count_nb_digits(usi));
+nb = va_arg(args, int);
+return (printf("%o", nb));
 break;
 /* u - As unsigned int decimal are concerned */
 case 'u':
