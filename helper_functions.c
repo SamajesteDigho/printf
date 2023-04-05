@@ -29,6 +29,10 @@ break;
 case 'S':
 return (0);
 break;
+/* p - As string pointers are concerned */
+case 'p':
+return (0);
+break;
 /* % - The asterix Jumper */
 case '%':
 return (0);
@@ -72,6 +76,7 @@ int print_text_formatted(char c, va_list args)
 {
 char *str;
 int nb;
+void *ptr;
 unsigned int usi;
 switch (c)
 {
@@ -135,6 +140,18 @@ return (print_str("(null)"));
 else
 {
 return (print_str(str));
+}
+break;
+/* p - As pointer are concerned */
+case 'p':
+ptr = va_arg(args, void*);
+if (ptr == NULL)
+{
+return (print_str("(nil)"));
+}
+else
+{
+return (printf("%p", ptr));
 }
 break;
 /* b - As binary is concerned */
