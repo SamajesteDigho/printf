@@ -90,8 +90,7 @@ break;
 /* x - As unsigned int hexadecimal are concerned */
 case 'x':
 usi = va_arg(args, unsigned int);
-printf("%x", usi);
-return (count_nb_digits(usi));
+return (printf("%x", usi));
 break;
 /* X - As unsigned int hexadecimal uppercase are concerned */
 case 'X':
