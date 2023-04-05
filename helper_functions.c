@@ -125,7 +125,14 @@ break;
 /* c - As integers are concerned */
 case 'i':
 nb = va_arg(args, int);
+if (sign[0] == '+' && nb < 0)
+{
 return (printf("%d", nb));
+}
+else
+{
+return (printf("%s%d", sign, nb));
+}
 break;
 /* c - As string are concerned */
 case 's':
